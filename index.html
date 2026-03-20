@@ -1,139 +1,251 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ระบบคำร้องหนังสือเดินทางและวีซ่าออนไลน์</title>
+    <title>Online Passport & Visa Request System | MSU</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style> 
-        body { font-family: 'Sarabun', sans-serif; } 
-        /* เพิ่มลูกเล่นพื้นหลังให้ดูมีมิติและทันสมัย */
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
         .bg-pattern {
-            background-color: #f8fafc;
-            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-color: #f1f5f9;
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
             background-size: 20px 20px;
         }
+        /* Style for hidden elements */
+        .hidden-section { display: none; }
     </style>
 </head>
 <body class="bg-pattern min-h-screen py-10 px-4 flex items-center justify-center">
-    <div class="bg-white p-8 md:p-10 rounded-3xl shadow-2xl w-full max-w-4xl border-t-8 border-slate-800">
+    <div class="bg-white rounded-3xl shadow-2xl w-full max-w-5xl overflow-hidden border border-slate-100">
         
-        <div class="text-center mb-10">
-            <img src="https://cdn-icons-png.flaticon.com/512/8074/8074804.png" alt="Logo" class="w-24 h-24 mx-auto mb-4 opacity-90">
-            <h1 class="text-3xl font-bold text-slate-800 mb-2">ระบบคำร้องหนังสือเดินทางและวีซ่า</h1>
-            <p class="text-slate-500 text-lg">สำหรับบุคลากรและนิสิต</p>
+        <div class="bg-[#1e3a8a] (navy) p-8 text-white border-b-8 border-[#f59e0b] (gold)">
+            <div class="flex items-center gap-6">
+                <img src="https://cdn-icons-png.flaticon.com/512/8074/8074804.png" alt="University Logo" class="w-20 h-20 filter invert brightness-0">
+                <div>
+                    <h1 class="text-3xl font-bold tracking-tight">Passport & Visa Request System</h1>
+                    <p class="text-blue-100 text-lg mt-1">For International Students & Staff | Mahasarakham University</p>
+                </div>
+            </div>
         </div>
-        
-        <form id="myForm" class="space-y-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-                <div>
-                    <label class="block text-slate-700 font-semibold mb-2 text-sm uppercase tracking-wide">ชื่อ-นามสกุล</label>
-                    <input type="text" id="name" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-slate-800 outline-none transition-all duration-300">
+
+        <form id="myForm" class="p-8 md:p-12 space-y-10">
+            
+            <section>
+                <h2 class="text-xl font-semibold text-slate-800 mb-6 flex items-center gap-3">
+                    <span class="bg-blue-100 text-blue-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                    Personal Information (as appeared in Passport)
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                    <div class="md:col-span-2">
+                        <label class="block text-slate-600 font-medium mb-2 text-sm uppercase tracking-wide">Full Name (Family Name First)</label>
+                        <input type="text" id="name" required placeholder="e.g., SMITH John David" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-slate-600 font-medium mb-2 text-sm uppercase tracking-wide">Nationality</label>
+                        <input type="text" id="nationality" required placeholder="e.g., Chinese, Indian" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-slate-600 font-medium mb-2 text-sm uppercase tracking-wide">Passport Number</label>
+                        <input type="text" id="passportNo" required placeholder="e.g., E1234567" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-slate-700 font-semibold mb-2 text-sm uppercase tracking-wide">รหัสนิสิต / รหัสบุคลากร</label>
-                    <input type="text" id="studentId" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-slate-800 outline-none transition-all duration-300">
+            </section>
+
+            <hr class="border-slate-100">
+
+            <section>
+                <h2 class="text-xl font-semibold text-slate-800 mb-6 flex items-center gap-3">
+                    <span class="bg-blue-100 text-blue-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                    Academic & Contact Details
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                    <div>
+                        <label class="block text-slate-600 font-medium mb-2 text-sm uppercase tracking-wide">Student / Staff ID Number</label>
+                        <input type="text" id="studentId" required placeholder="13 digits (for students)" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-slate-600 font-medium mb-2 text-sm uppercase tracking-wide">Faculty / College</label>
+                        <select id="faculty" required class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                            <option value="" disabled selected>Select Faculty...</option>
+                            <option value="Fine and Applied Arts and Culture">Faculty of Fine and Applied Arts and Culture</option>
+                            <option value="Humanities and Social Sciences">Faculty of Humanities and Social Sciences</option>
+                            <option value="Education">Faculty of Education</option>
+                            <option value="Science">Faculty of Science</option>
+                            <option value="Engineering">Faculty of Engineering</option>
+                            <option value="Medicine">College of Medicine</option>
+                            <option value="Nursing">Faculty of Nursing</option>
+                            <option value="Informatics">Faculty of Informatics</option>
+                            <option value="Mahasarakham Business School">Mahasarakham Business School (MBS)</option>
+                            <option value="Tourism and Hotel Management">Faculty of Tourism and Hotel Management</option>
+                            <option value="Other">Other / Staff</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-slate-600 font-medium mb-2 text-sm uppercase tracking-wide">Study Program / Major</label>
+                        <input type="text" id="program" required placeholder="e.g., B.F.A. in Visual Arts" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-slate-600 font-medium mb-2 text-sm uppercase tracking-wide">Mobile Phone Number</label>
+                        <input type="tel" id="phone" required placeholder="e.g., +66 812345678" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-slate-600 font-medium mb-2 text-sm uppercase tracking-wide">Email Address / WeChat ID</label>
+                        <input type="text" id="contactId" required placeholder="Active contact information" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-slate-700 font-semibold mb-2 text-sm uppercase tracking-wide">สัญชาติ</label>
-                    <input type="text" id="nationality" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-slate-800 outline-none transition-all duration-300">
+            </section>
+
+            <hr class="border-slate-100">
+
+            <section class="bg-blue-50 p-8 rounded-2xl border border-blue-100">
+                <h2 class="text-xl font-semibold text-blue-900 mb-6 flex items-center gap-3">
+                    <span class="bg-white text-blue-700 w-8 h-8 rounded-full flex items-center justify-center text-sm border border-blue-100">3</span>
+                    Visa Request Details
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                    <div class="md:col-span-2">
+                        <label class="block text-blue-800 font-medium mb-2 text-sm uppercase tracking-wide">I want to apply for:</label>
+                        <select id="requestType" required class="w-full p-3.5 bg-white border border-blue-200 text-blue-950 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                            <option value="" disabled selected>Select Request Type...</option>
+                            <option value="extension">Visa Extension (ต่ออายุวีซ่า)</option>
+                            <option value="cancellation">Visa Cancellation (ยกเลิกวีซ่า)</option>
+                        </select>
+                    </div>
+
+                    <div id="expirySection" class="hidden-section">
+                        <label class="block text-blue-800 font-medium mb-2 text-sm uppercase tracking-wide">Current Visa Expiry Date</label>
+                        <input type="date" id="visaExpiry" class="w-full p-3.5 bg-white border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-blue-950">
+                    </div>
+
+                    <div id="cancelSection" class="hidden-section">
+                        <label class="block text-blue-800 font-medium mb-2 text-sm uppercase tracking-wide">Requested Cancellation Date</label>
+                        <input type="date" id="visaCancel" class="w-full p-3.5 bg-white border border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-blue-950">
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-slate-700 font-semibold mb-2 text-sm uppercase tracking-wide">หนังสือเดินทางเลขที่</label>
-                    <input type="text" id="passportNo" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-slate-800 outline-none transition-all duration-300">
+            </section>
+
+            <hr class="border-slate-100">
+
+            <section>
+                <h2 class="text-xl font-semibold text-slate-800 mb-6 flex items-center gap-3">
+                    <span class="bg-blue-100 text-blue-700 w-8 h-8 rounded-full flex items-center justify-center text-sm">4</span>
+                    Upload Required Documents
+                </h2>
+                <div class="mb-5 text-slate-600 bg-slate-50 p-5 rounded-xl border border-slate-100 space-y-2 text-sm">
+                    <p class="font-semibold text-slate-700">Please scan all following documents into <span class="text-blue-700">ONE single PDF file</span>:</p>
+                    <ul class="list-disc list-inside space-y-1 pl-1">
+                        <li>Passport (all pages with stamps/info)</li>
+                        <li>Academic Transcript</li>
+                        <li>Student / ID Card Copy</li>
+                        <li>House Rental Contract / Residence Certificate</li>
+                    </ul>
+                    <p class="text-xs text-amber-700 font-medium pt-1">Note: Filename should be "YourName_StudentID.pdf". Max size: 10MB.</p>
                 </div>
                 
-                <div>
-                    <label class="block text-slate-700 font-semibold mb-2 text-sm uppercase tracking-wide">คณะ / สังกัด</label>
-                    <select id="faculty" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-slate-800 outline-none transition-all duration-300">
-                        <option value="" disabled selected>กรุณาเลือกคณะ...</option>
-                        <option value="คณะศิลปกรรมศาสตร์และวัฒนธรรมศาสตร์">คณะศิลปกรรมศาสตร์และวัฒนธรรมศาสตร์</option>
-                        <option value="คณะอื่นๆ">คณะอื่นๆ</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-slate-700 font-semibold mb-2 text-sm uppercase tracking-wide">หลักสูตร</label>
-                    <input type="text" id="program" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-slate-800 outline-none transition-all duration-300">
-                </div>
-
-                <div>
-                    <label class="block text-slate-700 font-semibold mb-2 text-sm uppercase tracking-wide">เบอร์โทรศัพท์มือถือ</label>
-                    <input type="tel" id="phone" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-slate-800 outline-none transition-all duration-300">
-                </div>
-                <div>
-                    <label class="block text-slate-700 font-semibold mb-2 text-sm uppercase tracking-wide">อีเมล หรือ WeChat ID</label>
-                    <input type="text" id="contactId" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-slate-800 outline-none transition-all duration-300">
-                </div>
-            </div>
-
-            <hr class="border-slate-200 my-8">
-
-            <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
-                <h3 class="font-bold text-slate-800 mb-4 flex items-center">
-                    <svg class="w-5 h-5 mr-2 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                    ข้อมูลเกี่ยวกับวีซ่า (กรอกเฉพาะที่ต้องการดำเนินการ)
-                </h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-slate-600 font-medium mb-2 text-sm">ต่ออายุ: วีซ่าจะหมดอายุวันที่</label>
-                        <input type="date" id="visaExpiry" class="w-full p-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-slate-800 outline-none transition-all duration-300">
-                    </div>
-                    <div>
-                        <label class="block text-slate-600 font-medium mb-2 text-sm">ยกเลิก: ประสงค์ยกเลิกวีซ่าในวันที่</label>
-                        <input type="date" id="visaCancel" class="w-full p-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-slate-800 outline-none transition-all duration-300">
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-8">
-                <label class="block text-slate-700 font-semibold mb-3 text-sm uppercase tracking-wide">แนบเอกสาร (รูปถ่าย หรือ PDF)</label>
                 <div class="flex items-center justify-center w-full">
-                    <label for="file" class="flex flex-col items-center justify-center w-full h-32 border-2 border-slate-300 border-dashed rounded-2xl cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
-                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                            <svg class="w-8 h-8 mb-3 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                            <p class="mb-2 text-sm text-slate-500"><span class="font-semibold">คลิกเพื่ออัปโหลด</span> หรือลากไฟล์มาวาง</p>
+                    <label for="file" class="flex flex-col items-center justify-center w-full h-40 border-2 border-slate-300 border-dashed rounded-2xl cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+                        <div class="flex flex-col items-center justify-center pt-5 pb-6 text-center px-4">
+                            <svg class="w-10 h-10 mb-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                            <p class="mb-2 text-sm text-slate-500"><span class="font-semibold text-blue-600">Click to upload PDF</span> or drag and drop</p>
+                            <p class="text-xs text-slate-400">PDF File only (Max. 10MB)</p>
                         </div>
-                        <input id="file" type="file" required class="hidden" />
+                        <input id="file" type="file" required accept=".pdf" class="hidden" />
                     </label>
                 </div>
-                <p id="fileNameDisplay" class="mt-2 text-sm text-center text-slate-600 font-medium"></p>
-            </div>
+                <p id="fileNameDisplay" class="mt-3 text-sm text-center text-blue-800 font-semibold bg-blue-50 p-2 rounded-lg hidden"></p>
+            </section>
             
-            <button type="submit" id="btn" class="w-full bg-slate-800 text-white text-lg font-bold py-4 px-4 rounded-xl hover:bg-slate-900 transition-all duration-300 shadow-lg hover:shadow-xl mt-8">
-                ส่งคำร้อง
-            </button>
+            <div class="pt-6">
+                <button type="submit" id="btn" class="w-full bg-[#1e3a8a] (navy) text-white text-lg font-bold py-5 px-6 rounded-2xl hover:bg-blue-950 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                    Submit My Request
+                </button>
+            </div>
         </form>
         
-        <div id="msg" class="mt-6 text-center text-lg hidden p-4 rounded-xl"></div>
+        <div id="msg" class="m-8 md:m-12 mt-0 text-center text-lg hidden p-6 rounded-2xl border"></div>
     </div>
 
     <script>
-        // === ลบข้อความนี้และใส่ Web App URL ของคุณในเครื่องหมาย ' ' ===
+        // === PASTE YOUR WEB APP URL INSIDE THE QUOTES BELOW ===
         const GAS_URL = '1m8_5ilRXXt86bE2UulcUoa7bdH-YUzOK';
 
-        // แสดงชื่อไฟล์เมื่อมีการเลือกไฟล์
-        document.getElementById('file').addEventListener('change', function(e) {
-            const fileName = e.target.files[0] ? e.target.files[0].name : '';
-            document.getElementById('fileNameDisplay').textContent = fileName ? 'ไฟล์ที่เลือก: ' + fileName : '';
+        // 1. Conditional Logic for Visa Sections
+        const requestTypeSelect = document.getElementById('requestType');
+        const expirySection = document.getElementById('expirySection');
+        const cancelSection = document.getElementById('cancelSection');
+        const visaExpiryInput = document.getElementById('visaExpiry');
+        const visaCancelInput = document.getElementById('visaCancel');
+
+        requestTypeSelect.addEventListener('change', function() {
+            // Hide both sections first
+            expirySection.classList.add('hidden-section');
+            cancelSection.classList.add('hidden-section');
+            visaExpiryInput.required = false;
+            visaCancelInput.required = false;
+
+            // Show relevant section based on selection
+            if (this.value === 'extension') {
+                expirySection.classList.remove('hidden-section');
+                visaExpiryInput.required = true;
+            } else if (this.value === 'cancellation') {
+                cancelSection.classList.remove('hidden-section');
+                visaCancelInput.required = true;
+            }
         });
 
+        // 2. Display selected filename
+        const fileInput = document.getElementById('file');
+        const fileNameDisplay = document.getElementById('fileNameDisplay');
+        fileInput.addEventListener('change', function(e) {
+            const fileName = e.target.files[0] ? e.target.files[0].name : '';
+            if (fileName) {
+                fileNameDisplay.textContent = 'Selected file: ' + fileName;
+                fileNameDisplay.classList.remove('hidden');
+            } else {
+                fileNameDisplay.classList.add('hidden');
+            }
+        });
+
+        // 3. Form Submission Handling
         document.getElementById('myForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('btn');
             const msg = document.getElementById('msg');
             
-            btn.innerHTML = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> กำลังประมวลผล...'; 
-            btn.disabled = true;
-            btn.classList.add('opacity-80', 'cursor-not-allowed');
+            // Reset message state
             msg.classList.add('hidden');
+            msg.className = 'm-8 md:m-12 mt-0 text-center text-lg p-6 rounded-2xl border'; // reset classes
 
-            const file = document.getElementById('file').files[0];
+            // Show Loading state on button
+            btn.innerHTML = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Processing... Please wait'; 
+            btn.disabled = true;
+            btn.classList.add('opacity-70', 'cursor-not-allowed');
+
+            const file = fileInput.files[0];
+
+            // === [Crucial] File Size Check (Max 10MB) ===
+            // 10485760 bytes = 10MB
+            if (file && file.size > 10485760) {
+                msg.innerHTML = '<b>⚠️ File Too Large</b><br>The attached PDF exceeds the 10MB limit. Please compress your PDF file and try again.';
+                msg.classList.add('text-amber-900', 'bg-amber-100', 'border-amber-200', 'block');
+                
+                // Re-enable button
+                btn.innerText = 'Submit My Request'; 
+                btn.disabled = false;
+                btn.classList.remove('opacity-70', 'cursor-not-allowed');
+                return; // Stop submission
+            }
+
             const reader = new FileReader();
             
             reader.onload = async function() {
+                // Convert file to Base64 string
                 const base64 = reader.result.split(',')[1];
                 
+                // Construct data payload
                 const payload = {
                     name: document.getElementById('name').value,
                     studentId: document.getElementById('studentId').value,
@@ -143,14 +255,18 @@
                     program: document.getElementById('program').value,
                     phone: document.getElementById('phone').value,
                     contactId: document.getElementById('contactId').value,
-                    visaExpiry: document.getElementById('visaExpiry').value,
-                    visaCancel: document.getElementById('visaCancel').value,
+                    // Send dates based on request type selection
+                    visaRequestType: requestTypeSelect.value,
+                    visaExpiry: visaExpiryInput.value, 
+                    visaCancel: visaCancelInput.value,
+                    // File data
                     fileData: base64,
                     fileName: file.name,
                     mimeType: file.type
                 };
 
                 try {
+                    // Send POST request to Google Apps Script
                     const response = await fetch(GAS_URL, {
                         method: 'POST',
                         headers: { "Content-Type": "text/plain;charset=utf-8" },
@@ -159,22 +275,36 @@
                     const result = await response.json();
                     
                     if(result.status === 'success') {
-                        msg.innerHTML = '<b>✅ ดำเนินการสำเร็จ</b><br>ข้อมูลและเอกสารของคุณถูกจัดส่งเรียบร้อยแล้ว';
-                        msg.className = 'mt-6 text-center text-emerald-800 bg-emerald-100 p-4 rounded-xl block border border-emerald-200';
+                        msg.innerHTML = '<b>✅ Submission Successful!</b><br>Your request and documents have been received. We will contact you soon.';
+                        msg.classList.add('text-emerald-900', 'bg-emerald-100', 'border-emerald-200', 'block');
                         document.getElementById('myForm').reset();
-                        document.getElementById('fileNameDisplay').textContent = '';
+                        fileNameDisplay.classList.add('hidden');
+                        expirySection.classList.add('hidden-section');
+                        cancelSection.classList.add('hidden-section');
+                    } else {
+                        throw new Error('Server returned error');
                     }
                 } catch (error) {
-                    msg.innerHTML = '<b>❌ เกิดข้อผิดพลาด</b><br>ไม่สามารถส่งข้อมูลได้ กรุณาลองใหม่อีกครั้ง';
-                    msg.className = 'mt-6 text-center text-red-800 bg-red-100 p-4 rounded-xl block border border-red-200';
+                    msg.innerHTML = '<b>❌ Submission Failed</b><br>An error occurred while sending your request. Please try again later or contact the office.';
+                    msg.classList.add('text-red-900', 'bg-red-100', 'border-red-200', 'block');
                 }
                 
-                btn.innerHTML = 'ส่งคำร้อง'; 
+                // Restore button state
+                btn.innerText = 'Submit My Request'; 
                 btn.disabled = false;
-                btn.classList.remove('opacity-80', 'cursor-not-allowed');
+                btn.classList.remove('opacity-70', 'cursor-not-allowed');
             };
             
-            reader.readAsDataURL(file);
+            // Read file if exists
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                // Should not happen due to 'required' attribute, but handles edges
+                alert('Please upload the required documents.');
+                btn.innerText = 'Submit My Request'; 
+                btn.disabled = false;
+                btn.classList.remove('opacity-70', 'cursor-not-allowed');
+            }
         });
     </script>
 </body>
