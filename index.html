@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจัดการหนังสือเดินทางและวีซ่า</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style> body { font-family: 'Sarabun', sans-serif; } </style>
+</head>
+<body class="bg-slate-50 min-h-screen py-10 px-4">
+    <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-3xl mx-auto border border-slate-100">
+        <h2 class="text-3xl font-bold mb-8 text-center text-slate-800">แบบฟอร์มคำร้องหนังสือเดินทางและวีซ่า</h2>
+        
+        <form id="myForm" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-slate-700 font-semibold mb-2">ชื่อ-นามสกุล</label>
+                    <input type="text" id="name" required class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-slate-700 font-semibold mb-2">รหัสนิสิต</label>
+                    <input type="text" id="studentId" required class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-slate-700 font-semibold mb-2">สัญชาติ</label>
+                    <input type="text" id="nationality" required class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-slate-700 font-semibold mb-2">หนังสือเดินทางเลขที่</label>
+                    <input type="text" id="passportNo" required class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-slate-700 font-semibold mb-2">คณะ</label>
+                    <select id="faculty" required class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                        <option value="" disabled selected>กรุณาเลือกคณะ...</option>
+                        <option value="คณะศิลปกรรมศาสตร์และวัฒนธรรมศาสตร์">คณะศิลปกรรมศาสตร์และวัฒนธรรมศาสตร์</option>
+                        <option value="คณะอื่นๆ">คณะอื่นๆ</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-slate-700 font-semibold mb-2">หลักสูตร</label>
+                    <input type="text" id="program" required class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-slate-700 font-semibold mb-2">เบอร์โทรศัพท์มือถือ</label>
+                    <input type="tel" id="phone" required class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-slate-700 font-semibold mb-2">อีเมล หรือ WeChat ID</label>
+                    <input type="text" id="contactId" required class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
+            </div>
+
+            <div class="bg-blue-50 p-6 rounded-xl border border-blue-100 mt-6">
+                <h3 class="font-semibold text-blue-800 mb-4">ข้อมูลเกี่ยวกับวีซ่า (เลือกกรอกเฉพาะรายการที่ต้องการ)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-slate-700 font-semibold mb-2 text-sm">กรณีขอต่ออายุ: วีซ่าจะหมดอายุวันที่</label>
+                        <input type="date" id="visaExpiry" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-slate-700 font-semibold mb-2 text-sm">กรณียกเลิก: ประสงค์ยกเลิกวีซ่าในวันที่</label>
+                        <input type="date" id="visaCancel" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6">
+                <label class="block text-slate-700 font-semibold mb-2">แนบเอกสาร (รูปถ่าย หรือ PDF)</label>
+                <input type="file" id="file" required class="w-full text-slate-600 file:mr-4 file:py-3 file:px-4 file:rounded-lg file:border-0 file:font-semibold file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200 transition">
+            </div>
+            
+            <button type="submit" id="btn" class="w-full bg-blue-600 text-white text-lg font-bold py-4 px-4 rounded-xl hover:bg-blue-700 transition duration-300 shadow-md">
+                บันทึกข้อมูล
+            </button>
+        </form>
+        
+        <div id="msg" class="mt-6 text-center text-lg hidden p-4 rounded-xl"></div>
+    </div>
+
+    <script>
+        // === เอา Web App URL เดิมของคุณมาวางในเครื่องหมายคำพูดด้านล่างนี้ ===
+        const GAS_URL = 'https://script.google.com/macros/s/AKfycbxsjMbs_M-N59a1au-mfD2_Df5LvrzxpyEsAmOF4nSlv1bw13UOk7J9Ra1XAm5m1Cy1BQ/exec';
+
+        document.getElementById('myForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('btn');
+            const msg = document.getElementById('msg');
+            
+            btn.innerText = 'กำลังประมวลผลข้อมูล...'; 
+            btn.disabled = true;
+            btn.classList.add('opacity-70');
+            msg.classList.add('hidden');
+
+            const file = document.getElementById('file').files[0];
+            const reader = new FileReader();
+            
+            reader.onload = async function() {
+                const base64 = reader.result.split(',')[1];
+                
+                // ดึงข้อมูลจากทุกช่อง
+                const payload = {
+                    name: document.getElementById('name').value,
+                    studentId: document.getElementById('studentId').value,
+                    nationality: document.getElementById('nationality').value,
+                    passportNo: document.getElementById('passportNo').value,
+                    faculty: document.getElementById('faculty').value,
+                    program: document.getElementById('program').value,
+                    phone: document.getElementById('phone').value,
+                    contactId: document.getElementById('contactId').value,
+                    visaExpiry: document.getElementById('visaExpiry').value,
+                    visaCancel: document.getElementById('visaCancel').value,
+                    fileData: base64,
+                    fileName: file.name,
+                    mimeType: file.type
+                };
+
+                try {
+                    const response = await fetch(GAS_URL, {
+                        method: 'POST',
+                        headers: { "Content-Type": "text/plain;charset=utf-8" },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+                    
+                    if(result.status === 'success') {
+                        msg.innerText = '✅ บันทึกข้อมูลและจัดส่งเอกสารสำเร็จ!';
+                        msg.className = 'mt-6 text-center text-lg font-bold text-emerald-700 bg-emerald-50 p-4 rounded-xl block';
+                        document.getElementById('myForm').reset();
+                    }
+                } catch (error) {
+                    msg.innerText = '❌ เกิดข้อผิดพลาด ไม่สามารถส่งข้อมูลได้';
+                    msg.className = 'mt-6 text-center text-lg font-bold text-red-700 bg-red-50 p-4 rounded-xl block';
+                }
+                
+                btn.innerText = 'บันทึกข้อมูล'; 
+                btn.disabled = false;
+                btn.classList.remove('opacity-70');
+            };
+            
+            reader.readAsDataURL(file);
+        });
+    </script>
+</body>
+</html>
